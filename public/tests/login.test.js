@@ -1,6 +1,14 @@
 const request = require('supertest');
 const app = require('../../app');
 
+
+//Testes Criado por Kevin Gabriel
+// Testes para login Administrador
+
+
+
+
+
 // Mock do Firebase
 jest.mock('firebase/auth', () => {
   return {
@@ -19,6 +27,7 @@ jest.mock('firebase/auth', () => {
 });
 
 describe('Rota POST /login', () => {
+  // Teste para login bem-sucedido
   it('deve fazer login com admin e redirecionar para /dashboard', async () => {
     const res = await request(app)
       .post('/login')
@@ -27,6 +36,8 @@ describe('Rota POST /login', () => {
     expect(res.statusCode).toBe(200);
     expect(res.body.redirectTo).toBe('/dashboard');
   });
+
+  // Teste para login falhado
 
   it('deve falhar com senha errada', async () => {
     const res = await request(app)
